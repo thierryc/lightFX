@@ -1,0 +1,4 @@
+bitarray==2.9.3
+bitstring==4.2.3
+ifaddr==0.2.0
+lifxlan==1.2.8
