@@ -1,4 +1,4 @@
-# LIFX Bulb Controller
+# lifx_controller - LIFX Bulb Controller
 
 A Python-based command-line tool for discovering, configuring, and controlling LIFX smart bulbs on your local network. This tool provides an easy way to manage your LIFX devices, including manual configuration and various control options.
 
@@ -48,6 +48,11 @@ Example:
 ```bash
 python lifx_controller.py --save-device 192.168.1.100 d0:73:d5:01:02:03 "Living Room"
 ```
+
+Optional:
+```bash
+chmod +x lifx_controller.py
+```   
 
 **List Configured Devices:**
 ```bash
@@ -158,6 +163,34 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you encounter any issues or have questions, please:
 1. Check the [Issues](https://github.com/YourUsername/lifx-controller/issues) page
 2. Create a new issue if your problem isn't already listed
+
+## Known Issues
+
+### Discovery + Use Appears to Fail on LIFX Firmware 3.70
+
+#### Problem
+Some users have reported issues with the `lifxlan` library failing to discover and control LIFX devices running Firmware 3.70. This problem may occur due to outdated MAC address mappings or compatibility quirks introduced in this firmware version.
+
+The exact root cause of the issue remains unclear.
+
+#### Affected Versions
+- Firmware: 3.70
+- lifxlan: Any version
+
+#### Symptoms
+- Devices are not discoverable.
+- Commands to control devices fail.
+
+#### Workaround / Solution
+
+1. **Update MAC Address Mapping**
+   Use the official LIFX app or Apple Home to update the MAC address of your device on the network. 
+   This may help the device has been re-registered correctly with your router.
+
+2. **Retry Discovery**
+   After updating the MAC address:
+   - Restart your LIFX devices.
+   - Retry `lifx_controller`.
 
 ---
 
